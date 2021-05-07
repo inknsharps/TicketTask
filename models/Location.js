@@ -11,14 +11,6 @@ Location.init(
             primaryKey: true,
             autoIncrement: true
         },
-        eventId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: "event",
-                key: "id"
-            }
-        },
         streetAddress: {
             type: DataTypes.STRING,
             allowNull: false,
