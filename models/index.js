@@ -1,6 +1,7 @@
 const User = require("./User");
 const Event = require("./Event");
 const Location = require("./Location");
+const Ticket = require("./Ticket");
 
 User.hasMany(Event, {
     foreignKey: "userId",
@@ -12,24 +13,28 @@ Event.belongsTo(User, {
     as: "event_creator"
 });
 
-Event.hasMany(Location, {
-    foreignKey: "eventId",
-    as: "event_location"
+User.belongsToMany(Event, {
+    through: { 
+        model: Ticket,
+    },
+    as: "event_attendees"
 });
 
-Location.belongsToMany(Event, {
+Event.belongsToMany(User, {
+    through: {
+        model: Ticket,
+    },
+    as: "user_tickets"
+});
+
+Event.belongsTo(Location, {
     foreignKey: "eventId",
     as: "event_location"
 });
 
 Location.hasMany(Event, {
-    foreignKey: "locationId",
-    as: "location_of_event"
+    foreignKey: "eventId",
+    as: "location_event"
 });
 
-Event.belongsToMany(Location, {
-    foreignKey: "locationId",
-    as: "location_of_event"
-});
-
-module.exports = { User, Event, Location };
+module.exports = { User, Event, Ticket, Location };
