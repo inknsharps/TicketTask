@@ -7,9 +7,28 @@
  *
  * Made By MaterializeCSS.com
  */
+ 
+ /*nav .brand-logo.center{
+     font-family: 'Courier New', Courier, monospace;
+ }*/
+ p {
+     color: white;
+     /*font-weight: bold;*/
+     text-shadow: 2px 2px 5px grey;
+ }
 
+ h1 {
+    text-shadow: 2px 2px 5px black;
+ }
+ nav {
+     background-color: #Ff9800;
+ }
+ 
  .icon-block {
     padding: 0 15px;
+    color: white;
+    width: 80%;
+    background: rgba(155, 148, 152, 0.28);
 }
 
 .icon-block .material-icons {
@@ -54,6 +73,7 @@
 
 .search-title {
     margin-bottom: 3vw;
+    color: white;
 }
 
 .event-title {
