@@ -7,12 +7,13 @@ router.get("/", async (req, res) => {
            include: [
                { 
                    model: User,
+                   as: "event_creator",
                    attributes: ["username"]
                }
            ]
        });
        const events = eventsData.map((event) => event.get({ plain: true }));
-       res.status(200).render("events", { events })
+       res.status(200).render("homepage", { events })
   } catch (err) {
        res.status(500).json(err);
   } 
@@ -24,6 +25,7 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: User,
+          as: "event_creator",
           attributes: ['name'],
         },
       ],
@@ -38,6 +40,16 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
 });
 
 module.exports = router;
