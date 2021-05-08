@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Project_2</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+
+    <!--Links from original index-->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/style.css" />
+
+</head>
+
+<body>
+    <style>
+        body {
+          background-image: url('/img/img5.jpg');
+        }
+        </style>
+    <!--first nav bar, we can remove it -->
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">TICKETTASK</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="login.html">Log in</a></li>
+            <li><a href="find.html">Find Event</a></li> <!--should be a handlebars-->
+            <li><a href="buytickets.html">Buy tickets</a></li> <!--should be a handlebars-->
+          </ul>
+        </div>
+      </nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src=".js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
