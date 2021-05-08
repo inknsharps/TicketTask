@@ -19,9 +19,8 @@ router.get('/:id', async (req, res) => {
         include: [
             { 
                 model: Event, 
-                as: 'location_event' 
+                as: 'location_events' 
             }
-            
         ]
       });
   
@@ -40,7 +39,13 @@ router.get('/:id', async (req, res) => {
 // CREATE a location
 router.post('/', async (req, res) => {
     try {
-      const locationData = await Location.create(req.body);
+      const locationData = await Location.create({
+        streetAddress: req.body.streetAddress,
+        city: req.body.city,
+        postalCode: req.body.postalCode,
+        state: req.body.state,
+        country: req.body.country
+      });
       res.status(200).json(locationData);
     } catch (err) {
       res.status(400).json(err);
