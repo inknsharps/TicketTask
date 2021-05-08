@@ -15,6 +15,14 @@ Event.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        eventDate: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        eventPrice: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -24,16 +24,16 @@ Event.belongsToMany(User, {
     through: {
         model: Ticket,
     },
-    as: "user_tickets"
+    as: "ticketholders"
 });
 
 Event.belongsTo(Location, {
-    foreignKey: "eventId",
+    foreignKey: "locationId",
     as: "event_location"
 });
 
 Location.hasMany(Event, {
-    foreignKey: "eventId",
+    foreignKey: "locationId",
     as: "location_event"
 });
 
