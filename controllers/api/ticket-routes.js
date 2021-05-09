@@ -1,5 +1,23 @@
 const router = require("express").Router();
-const { Ticket } = require("../../models");
+const { User, Event, Location, Ticket } = require("../../models");
+
+router.get("/email/:userid/:eventid", async (req, res) => {
+    try {
+        const rawTicketData = await Ticket.findOne(
+            {
+                where: {
+                    userId: req.params.userid,
+                    eventId: req.params.eventid
+                },
+                include: { all: true }
+            },
+        );
+        const ticketData = await rawTicketData.get({ plain: true });
+        res.status(200).json(ticketData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 // Create a ticket based on the event ID and user ID
 // Make SURE we grab existing event and user IDs from the request, otherwise this will probably break
