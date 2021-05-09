@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const { User, Event, Location, Ticket } = require("../../models");
 
+require("dotenv").config();
+const { createEmail } = require("../../utils/emailer");
+
 router.get("/email/:userid/:eventid", async (req, res) => {
     try {
         const rawTicketData = await Ticket.findOne(
@@ -9,10 +12,11 @@ router.get("/email/:userid/:eventid", async (req, res) => {
                     userId: req.params.userid,
                     eventId: req.params.eventid
                 },
-                include: { all: true }
+                include: { all: true } // Probably change this to limit info later for security reasons
             },
         );
         const ticketData = await rawTicketData.get({ plain: true });
+        createEmail(ticketData.event.eventName, ticketData.event.eventName);
         res.status(200).json(ticketData);
     } catch (err) {
         res.status(400).json(err);
