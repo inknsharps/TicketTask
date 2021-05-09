@@ -69,9 +69,9 @@ const generateQRCode = async (url) => {
 };
 
 // This currently send to yourself at the moment for testing.
-const createEmail = async (url, event, recipient) => {
+const createEmail = async (ticketNo, event, recipient) => {
     try {
-        const newQRCode = await generateQRCode(url);
+        const newQRCode = await generateQRCode(ticketNo);
         const message = await createEmailTemplate(newQRCode);
         const mailer = await transporter.sendMail({
             from: process.env.EMAILER,

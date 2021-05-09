@@ -17,8 +17,9 @@ router.get("/email/:userid/:eventid", async (req, res) => {
                 include: { all: true } // Probably change this to limit info later for security reasons
             },
         );
+        // ALSO: Need to add the recipient properly into the createEmail() function.
         const ticketData = await rawTicketData.get({ plain: true });
-        createEmail(ticketData.event.eventName, ticketData.event.eventName);
+        createEmail(ticketData.ticketNo, ticketData.event.eventName);
         res.status(200).json(ticketData);
     } catch (err) {
         res.status(400).json(err);
