@@ -11,6 +11,10 @@ Ticket.init(
             primaryKey: true,
             autoIncrement: true
         },
+        ticketNo: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         eventId: {
             type: DataTypes.INTEGER,
             allowNull: false,

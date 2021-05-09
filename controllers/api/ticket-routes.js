@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { User, Event, Location, Ticket } = require("../../models");
+// nanoid is used to generate the ticket number
+const { nanoid } = require("nanoid");
 
 require("dotenv").config();
 const { createEmail } = require("../../utils/emailer");
@@ -28,6 +30,7 @@ router.get("/email/:userid/:eventid", async (req, res) => {
 router.post("/:userid/:eventid", async (req, res) => {
     try {
         const newTicket = await Ticket.create({
+            ticketNo: nanoid(),
             userId: req.params.userid,
             eventId: req.params.eventid
         });
