@@ -19,7 +19,27 @@ router.get("/", async (req, res) => {
   } 
 });
 
-router.get('/:id', async (req, res) => {
+// Events page
+router.get("/events", async (req, res) => {
+  try {
+       const eventsData = await Event.findAll({
+           include: [
+               { 
+                   model: User,
+                   as: "event_creator",
+                   attributes: ["username"]
+               }
+           ]
+       });
+       const events = eventsData.map((event) => event.get({ plain: true }));
+       res.status(200).render("events", { events })
+  } catch (err) {
+       res.status(500).json(err);
+  } 
+});
+
+// Get a event by idea and display the information on the page
+router.get('events/:id', async (req, res) => {
   try {
     const eventData = await Event.findByPk(req.params.id, {
       include: [
