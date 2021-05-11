@@ -9,15 +9,15 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!--Links from original index-->
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 
 </head>
 
@@ -32,18 +32,31 @@
         <div class="nav-wrapper">
           <a href="#" class="brand-logo center">TICKETTASK</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="login.html">Log in</a></li>
+            <li><a href="login.handlebars">Log in</a></li>
             <li><a href="find.html">Find Event</a></li> <!--should be a handlebars-->
             <li><a href="buytickets.html">Buy tickets</a></li> <!--should be a handlebars-->
           </ul>
         </div>
       </nav>
+            <!--second nav bar-->
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#search-title" class="brand-logo">search tickets</a>
+            <ul class="right hide-on-med-and-down"></ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="#search-title">Search for Tickets</a></li>
+
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+      
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <!--<li><a href="login.handlebars"></a></li>-->
         {{/if}}
       </nav>
     </header>
@@ -52,7 +65,7 @@
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 
