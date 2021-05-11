@@ -34,7 +34,7 @@ Event.belongsTo(Location, {
 
 Location.hasMany(Event, {
     foreignKey: "locationId",
-    as: "location_event"
+    as: "location_events"
 });
 
 module.exports = { User, Event, Ticket, Location };

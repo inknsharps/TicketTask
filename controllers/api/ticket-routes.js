@@ -5,7 +5,7 @@ const { Ticket } = require("../../models");
 // Make SURE we grab existing event and user IDs from the request, otherwise this will probably break
 router.post("/:userid/:eventid", async (req, res) => {
     try {
-        const newTicket = Ticket.create({
+        const newTicket = await Ticket.create({
             userId: req.params.userid,
             eventId: req.params.eventid
         });
@@ -18,7 +18,7 @@ router.post("/:userid/:eventid", async (req, res) => {
 // Delete a ticket based on the event ID and user ID
 router.delete("/:userid/:eventid", async (req, res) => {
     try {
-        const deletedTicket = Ticket.destroy({
+        const deletedTicket = await Ticket.destroy({
             where: { 
                 userId: req.params.userid,
                 eventId: req.params.eventid
