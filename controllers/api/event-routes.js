@@ -58,14 +58,34 @@ router.get("/id/:id", async (req, res) => {
     }
 });
 
-// Get/search for events (and its location) based on the event name
-router.get("/search/:name", async (req, res) => {
+// Get/very fuzzy search for events (and its location) based on the event name
+// Query string pathing should be (without spaces):
+// /search? name=eventname &pricemax=50 &date=2022-02-22
+router.get("/search", async (req, res) => {
     try {
         const eventsSearched = await Event.findAll({
             where: {
-                eventName: {
-                    [Op.like]: `%${req.params.name}%`
-                }
+                // We use OR to just look for everything at the moment in case a parameter is not passed
+                [Op.or]: [
+                    {
+                        eventName: {
+                            // Op.like should be good enough for this column
+                            [Op.like]: `%${req.query.name}%`
+                        }
+                    },
+                    {
+                        eventPrice: {
+                            // We use Op.lte as a less than whatever price is set to max
+                            [Op.lte]: [req.query.pricemax]
+                        },
+                    },
+                    {
+                        eventDate: {
+                            // Op.substring is used here since the date format in the database columns has extra stuff
+                            [Op.substring]: `%${req.query.date}%`
+                        }
+                    },
+                ]
             },
             include: {
                 model: Location,
