@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
         {
           model: User,
           as: "event_creator",
-          attributes: ['name'],
+          attributes: ['username'],
         },
       ],
     });

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const { User, Event, Location } = require("../../models");
 
 // Get all events, will need to adjust the render page once that is complete.
@@ -30,7 +31,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get event by event ID
-router.get("/:id", async (req, res) => {
+router.get("/id/:id", async (req, res) => {
     try {
         const eventData = await Event.findByPk(req.params.id, {
             include: [
@@ -54,6 +55,26 @@ router.get("/:id", async (req, res) => {
         res.status(200).json(event);
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+
+// Get/search for events (and its location) based on the event name
+router.get("/search/:name", async (req, res) => {
+    try {
+        const eventsSearched = await Event.findAll({
+            where: {
+                eventName: {
+                    [Op.like]: `%${req.params.name}%`
+                }
+            },
+            include: {
+                model: Location,
+                as: "event_location"
+            }
+        });
+        res.status(200).json(eventsSearched);
+    } catch (err) {
+        res.status(400).json(err);
     }
 });
 
