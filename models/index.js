@@ -27,6 +27,23 @@ Event.belongsToMany(User, {
     as: "ticketholders"
 });
 
+// Super N:M associations
+User.hasMany(Ticket, {
+    foreignKey: "userId"
+});
+
+Ticket.belongsTo(User, {
+    foreignKey: "userId"
+});
+
+Event.hasMany(Ticket, {
+    foreignKey: "eventId"
+});
+
+Ticket.belongsTo(Event, {
+    foreignKey: "eventId"
+});
+
 Event.belongsTo(Location, {
     foreignKey: "locationId",
     as: "event_location"
