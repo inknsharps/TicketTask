@@ -33,11 +33,11 @@
 
     <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo center">TICKETTASK</a>
+          <a href="/" class="brand-logo center">TICKETTASK</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="login.handlebars">Log in</a></li>
-            <li><a href="events.handlebars">Find Event</a></li> <!--should be a handlebars-->
-            <li><a href="tickets.handlebars">Buy tickets</a></li> <!--should be a handlebars-->
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/events">Find Event</a></li> <!--should be a handlebars-->
+            <li><a href="/tickets">Buy tickets</a></li> <!--should be a handlebars-->
           </ul>
         </div>
       </nav>
@@ -74,7 +74,7 @@
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src=".js/logout.js"></script>
+  <script src="./js/logout.js"></script>
   {{/if}}
 </body>
 
