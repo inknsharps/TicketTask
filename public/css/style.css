@@ -11,9 +11,6 @@
  /*nav .brand-logo.center{
      font-family: 'Courier New', Courier, monospace;
  }*/
- label {
-     color: black;
- }
  
  p {
      color: white;
@@ -21,6 +18,9 @@
      text-shadow: 2px 2px 5px grey;
  }
 
+ .row {
+     color:black;
+ }
  h1 {
     text-shadow: 2px 2px 5px black;
  }
