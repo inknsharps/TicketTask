@@ -24,14 +24,27 @@
 
 <div>
     <h2>Create a new event:</h2>
-    <form>
+    {{!-- Hide userId here --}}
+    <form class="create-new-event" data-userId={{userEvents.id}}>
         <label for="event-name">New Event Name:</label>
         <input type="text" id="event-name" name="event-name">
-        <label for="event-location">Event Location:</label>
-        <input type="text" id="event-location" name="event-location">
+        <fieldset>
+            <legend>Event Location Details:</legend>
+            <label for="event-address">Address</label>
+            <input type="text" id="event-address" name="event-address">
+            <label for="event-city">City</label>
+            <input type="text" id="event-city" name="event-city">
+            <label for="event-postalcode">Postal Code</label>
+            <input type="text" id="event-postalcode" name="event-postalcode">
+            <label for="event-state">State</label>
+            <input type="text" id="event-state" name="event-state">
+            <label for="event-country">Country</label>
+            <input type="text" id="event-country" name="event-country">
+        </fieldset>
         <label for="event-date">Event Date:</label>
         <input type="text" id="event-date" name="event-date">
         <label for="event-date">Event Price:</label>
-        <input type="text" id="event-date" name="event-date">
+        <input type="text" id="event-price" name="event-price">
+        <button type="submit">Submit</button>
     </form>
 </div>
