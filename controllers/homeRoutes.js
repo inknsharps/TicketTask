@@ -35,7 +35,10 @@ router.get("/events", async (req, res) => {
            ]
        });
        const events = eventsData.map((event) => event.get({ plain: true }));
-       res.status(200).render("events", { events })
+       res.status(200).render("events", { 
+        logged_in: req.session.logged_in,
+        events 
+      })
   } catch (err) {
        res.status(500).json(err);
   } 

@@ -31,7 +31,10 @@ router.get("/", async (req, res) => {
         });
         const locationData = locationsEvents.map(location => location.get({plain: true}));
         console.log(locationData);
-        res.status(200).render("search", { locationData });
+        res.status(200).render("search", { 
+          logged_in: req.session.logged_in,
+          locationData 
+        });
       } catch (err) {
         res.status(400).json(err);
       }
