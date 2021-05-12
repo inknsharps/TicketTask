@@ -66,7 +66,8 @@ router.get("/search", async (req, res) => {
         as: "location_events"
       }
     });
-    res.status(200).render("events", { locationsEvents });
+    // res.status(200).render("events", { locationsEvents });
+    res.status(200).json(locationsEvents);
   } catch (err) {
     res.status(400).json(err);
   }
