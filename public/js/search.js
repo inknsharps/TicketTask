@@ -1,5 +1,5 @@
 const cityInput = document.querySelector("#get-city");
-const searchCityButton = document.querySelector(".search-city");
+const searchCityArea = document.querySelector(".search-area");
 
 const searchCity = async (event) => {
     event.stopPropagation();
@@ -16,4 +16,4 @@ const searchCity = async (event) => {
     };
 };
 
-searchCityButton.addEventListener("click", searchCity);
+searchCityArea.addEventListener("submit", searchCity);
