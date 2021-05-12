@@ -11,6 +11,9 @@
  /*nav .brand-logo.center{
      font-family: 'Courier New', Courier, monospace;
  }*/
+ label {
+     color: black;
+ }
  
  p {
      color: white;
