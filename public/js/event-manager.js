@@ -51,9 +51,6 @@ const createEvent = async (event) => {
 };
 
 // Updates event by event ID
-// TO DO:
-// Add query selectors, figure out how to deal with location updating
-// Add event listeners
 const updateEvent = async (event) => {
     event.stopPropagation();
     
@@ -62,11 +59,11 @@ const updateEvent = async (event) => {
     const locationId = event.target.parentElement.getAttribute("data-locationId");
     
     const updatedLocation = {
-        locationAddress: document.querySelector(`.eventId${eventId}-address`),
-        locationCity: document.querySelector(`.eventId${eventId}-city`),
-        locationPostalCode: document.querySelector(`.eventId${eventId}-postalcode`),
-        locationState: document.querySelector(`.eventId${eventId}-state`),
-        locationCountry: document.querySelector(`.eventId${eventId}-country`)
+        streetAddress: document.querySelector(`.eventId${eventId}-address`).textContent,
+        city: document.querySelector(`.eventId${eventId}-city`).textContent,
+        postalCode: document.querySelector(`.eventId${eventId}-postalcode`).textContent,
+        state: document.querySelector(`.eventId${eventId}-state`).textContent,
+        country: document.querySelector(`.eventId${eventId}-country`).textContent
     };
 
     const updateLocationResponse = await fetch(`/api/locations/${locationId}`, {
@@ -74,24 +71,27 @@ const updateEvent = async (event) => {
         body: JSON.stringify(updatedLocation),
         headers: { "Content-Type": "application/json" }
     });
-    const updatedLocationData = await updateLocationResponse.json();
+    if (updateLocationResponse.ok) {
+        
+        const updatedEvent = {
+            eventName: document.querySelector(`.eventId${eventId}-name`).textContent,
+            eventDate: document.querySelector(`.eventId${eventId}-date`).textContent,
+            eventPrice: document.querySelector(`.eventId${eventId}-price`).textContent,
+            locationId: locationId
+        };
     
-    const updatedEvent = {
-        eventName: document.querySelector(`.eventId${eventId}-name`),
-        eventDate: document.querySelector(`.eventId${eventId}-date`),
-        eventPrice: document.querySelector(`.eventId${eventId}-price`),
-        locationId: updatedLocationData.id
-    };
-
-    const updateEventResponse = await fetch(`/api/events/${eventId}`, {
-        method: "PUT",
-        body: JSON.stringify(updatedEvent),
-        headers: { "Content-Type": "application/json" }
-    });
-    if (response.ok) {
-        document.location.reload();
-    } else {
-        alert("Failed to update event.");
+        console.log(updatedEvent);
+    
+        const updateEventResponse = await fetch(`/api/events/${eventId}`, {
+            method: "PUT",
+            body: JSON.stringify(updatedEvent),
+            headers: { "Content-Type": "application/json" }
+        });
+        if (updateEventResponse.ok) {
+            document.location.reload();
+        } else {
+            alert("Failed to update event.");
+        }
     }
 };
 
@@ -105,7 +105,7 @@ const deleteEvent = async (event) => {
         headers: { "Content-Type": "application/json" }
     });
     if (response.ok) {
-        document.location.reload();
+        document.location.alert("updated!");
     } else {
         alert("Failed to delete post.");
     }

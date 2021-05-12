@@ -13,10 +13,9 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single location
-router.get('id/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
       const locationData = await Location.findByPk(req.params.id, {
-        // JOIN with travellers, using the Trip through table
         include: [
             { 
                 model: Event, 
@@ -93,11 +92,11 @@ router.put('/:id', async (req, res) => {
   try {
     const updatedLocation = await Location.update(
       {
-        locationAddress: req.body.locationAddress,
-        locationCity: req.body.locationCity,
-        locationPostalCode: req.body.locationPostalCode,
-        locationState: req.body.locationState,
-        locationCountry: req.body.locationCountry
+        streetAddress: req.body.streetAddress,
+        city: req.body.city,
+        postalCode: req.body.postalCode,
+        state: req.body.state,
+        country: req.body.country
       },
       {
         where: { id: req.params.id }
