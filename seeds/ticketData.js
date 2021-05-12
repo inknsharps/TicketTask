@@ -4,12 +4,14 @@ const ticketData = [
     // Gigi is going to Neil's event...
     {
         eventId: 1,
-        userId: 2
+        userId: 2,
+        ticketNo: "NEILSEVENT2021"
     },
-    // Gigi is going to Neil's event...
+    // Neil is going to Gigi's event...
     {
         eventId: 3,
-        userId: 1
+        userId: 1,
+        ticketNo: "GIGISEVENT2021"
     }
 ];
 
