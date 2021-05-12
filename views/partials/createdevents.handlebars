@@ -1,8 +1,16 @@
 {{#each userEvents.event_creator}}
-<div class="created-event" data-eventId="{{id}}">
-    <p>Event name: {{eventName}}</p>
-    <p>Location: {{event_location.streetAddress}}, {{event_location.city}} {{event_location.postalCode}} {{event_location.state}}, {{event_location.country}}</p>
-    <p>Date: {{eventDate}}</p>
-    <p>Price: {{eventPrice}}</p>
+<div class="created-event" data-eventId="{{id}}" data-locationId="{{event_location.id}}">
+    <p>Event name: <span contenteditable="true" class="eventId{{id}}-name">{{eventName}}</span></p>
+    <p>Location details: 
+        <p contenteditable="true" class="eventId{{id}}-address">{{event_location.streetAddress}}</p>
+        <p contenteditable="true" class="eventId{{id}}-city">{{event_location.city}}</p> 
+        <p contenteditable="true" class="eventId{{id}}-postalcode">{{event_location.postalCode}}</p> 
+        <p contenteditable="true" class="eventId{{id}}-state">{{event_location.state}}</p> 
+        <p contenteditable="true" class="eventId{{id}}-country">{{event_location.country}}</p>
+    </p>
+    <p>Date: <span contenteditable="true" class="eventId{{id}}-date">{{eventDate}}</span></p>
+    <p>Price: <span contenteditable="true" class="eventId{{id}}-price">{{eventPrice}}</span></p>
+    <button type="button" class="update-button">Update</button>
+    <button type="button" class="delete-button"l>Delete</button>
 </div>
 {{/each}}

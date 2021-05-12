@@ -88,5 +88,25 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
 });
+
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedLocation = await Location.update(
+      {
+        locationAddress: req.body.locationAddress,
+        locationCity: req.body.locationCity,
+        locationPostalCode: req.body.locationPostalCode,
+        locationState: req.body.locationState,
+        locationCountry: req.body.locationCountry
+      },
+      {
+        where: { id: req.params.id }
+      }
+    );
+    res.status(200).json(updatedLocation);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
   
 module.exports = router;

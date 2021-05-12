@@ -1,25 +1,23 @@
 const newEventForm = document.querySelector(".create-new-event");
+const updateButton = document.querySelectorAll(".update-button");
+const deleteButton = document.querySelectorAll(".delete-button");
 
 const createEvent = async (event) => {
     event.preventDefault();
 
-    // Event date will be in the form
     const eventDetails = {
         eventName: document.querySelector("#event-name").value,
         eventDate: document.querySelector("#event-date").value,
         eventPrice: parseInt(document.querySelector("#event-price").value),
         userId: parseInt(event.target.getAttribute("data-userId"))
-    }
-    console.log(eventDetails)
+    };
     const locationDetails = {
         streetAddress: document.querySelector("#event-address").value,
         city: document.querySelector("#event-city").value,
         postalCode: parseInt(document.querySelector("#event-postalcode").value),
         state: document.querySelector("#event-state").value,
         country: document.querySelector("#event-country").value
-    }
-    console.log(locationDetails)
-    
+    };   
     // Explanation for this monstrosity:
     // We make a POST request to create a new location.
     // We have to use the .json() method to parse the JSON response into javascript objects (our response on the backend spits out the newly created instance of the Location model as JSON).
@@ -53,18 +51,41 @@ const createEvent = async (event) => {
 };
 
 // Updates event by event ID
+// TO DO:
+// Add query selectors, figure out how to deal with location updating
+// Add event listeners
 const updateEvent = async (event) => {
     event.stopPropagation();
+    
+    // Get the event ID from data attribute
+    const eventId = event.target.parentElement.getAttribute("data-eventId");
+    const locationId = event.target.parentElement.getAttribute("data-locationId");
+    
+    const updatedLocation = {
+        locationAddress: document.querySelector(`.eventId${eventId}-address`),
+        locationCity: document.querySelector(`.eventId${eventId}-city`),
+        locationPostalCode: document.querySelector(`.eventId${eventId}-postalcode`),
+        locationState: document.querySelector(`.eventId${eventId}-state`),
+        locationCountry: document.querySelector(`.eventId${eventId}-country`)
+    };
 
-    const eventName = document.querySelector(".event-name");
-    const eventDate = document.querySelector(".event-date");
-    const eventPrice = document.querySelector(".event-price");
-
-    const locationId = document.querySelector(".location-id");
-
-    const response = await fetch(`/api/events/${postId}`, {
+    const updateLocationResponse = await fetch(`/api/locations/${locationId}`, {
         method: "PUT",
-        body: JSON.stringify({ eventName, eventDate, eventPrice, locationId }),
+        body: JSON.stringify(updatedLocation),
+        headers: { "Content-Type": "application/json" }
+    });
+    const updatedLocationData = await updateLocationResponse.json();
+    
+    const updatedEvent = {
+        eventName: document.querySelector(`.eventId${eventId}-name`),
+        eventDate: document.querySelector(`.eventId${eventId}-date`),
+        eventPrice: document.querySelector(`.eventId${eventId}-price`),
+        locationId: updatedLocationData.id
+    };
+
+    const updateEventResponse = await fetch(`/api/events/${eventId}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedEvent),
         headers: { "Content-Type": "application/json" }
     });
     if (response.ok) {
@@ -77,8 +98,9 @@ const updateEvent = async (event) => {
 const deleteEvent = async (event) => {
     event.stopPropagation();
 
-    const eventId = document.querySelector(".event-id");
-    const response = await fetch(`/api/posts/${eventId}`, {
+    const eventId = event.target.parentElement.getAttribute("data-eventId");
+    console.log(eventId);
+    const response = await fetch(`/api/events/${eventId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
     });
@@ -90,3 +112,9 @@ const deleteEvent = async (event) => {
 };
 
 newEventForm.addEventListener("submit", createEvent);
+updateButton.forEach((button) => {
+    button.addEventListener("click", updateEvent)
+});
+deleteButton.forEach((button) => {
+    button.addEventListener("click", deleteEvent)
+});
