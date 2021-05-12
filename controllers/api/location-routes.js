@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
 router.get('id/:id', async (req, res) => {
     try {
       const locationData = await Location.findByPk(req.params.id, {
-        // JOIN with travellers, using the Trip through table
         include: [
             { 
                 model: Event, 
@@ -87,6 +86,26 @@ router.post('/', async (req, res) => {
     } catch (err) {
       res.status(400).json(err);
     }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedLocation = await Location.update(
+      {
+        streetAddress: req.body.streetAddress,
+        city: req.body.city,
+        postalCode: req.body.postalCode,
+        state: req.body.state,
+        country: req.body.country
+      },
+      {
+        where: { id: req.params.id }
+      }
+    );
+    res.status(200).json(updatedLocation);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
   
 module.exports = router;
