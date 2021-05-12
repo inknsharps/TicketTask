@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single location
-router.get('/:id', async (req, res) => {
+router.get('id/:id', async (req, res) => {
     try {
       const locationData = await Location.findByPk(req.params.id, {
         include: [

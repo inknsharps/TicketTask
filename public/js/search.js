@@ -3,7 +3,7 @@ const searchCityButton = document.querySelector(".search-city");
 
 const searchCity = async (event) => {
     event.stopPropagation();
-    let searchedCity = cityInput.value;
+    const searchedCity = cityInput.value;
     
     const response = await fetch(`api/locations/search?city=${searchedCity}`, {
         method: "GET",

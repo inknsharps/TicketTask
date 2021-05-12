@@ -1,6 +1,6 @@
 const newEventForm = document.querySelector(".create-new-event");
-const updateButton = document.querySelectorAll(".update-button");
-const deleteButton = document.querySelectorAll(".delete-button");
+const updateButton = document.querySelectorAll(".update-event-button");
+const deleteButton = document.querySelectorAll(".delete-event-button");
 
 const createEvent = async (event) => {
     event.preventDefault();
