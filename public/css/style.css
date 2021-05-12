@@ -11,6 +11,7 @@
  /*nav .brand-logo.center{
      font-family: 'Courier New', Courier, monospace;
  }*/
+ 
  p {
      color: white;
      /*font-weight: bold;*/
@@ -24,11 +25,21 @@
      background-color: #Ff9800;
  }
  
+ .row {
+     background-color: rgba(202, 223, 226, 0.28);;
+ }
  .icon-block {
     padding: 0 15px;
     color: white;
     width: 80%;
-    background: rgba(155, 148, 152, 0.28);
+    background: rgba(28, 152, 168, 0.28);
+    transition: 1s;
+}
+.icon-block:hover {
+    transform: scale(1.2);
+    background-color:rgba(38, 202, 207, 0.3);
+    opacity: 1.0; 
+    
 }
 
 .icon-block .material-icons {
