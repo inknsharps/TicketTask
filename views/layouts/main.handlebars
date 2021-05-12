@@ -35,7 +35,9 @@
         <div class="nav-wrapper">
           <a href="/" class="brand-logo center">TICKETTASK</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
+            {{#unless logged_in}}
             <li><a href="/login">Log in</a></li>
+            {{/unless}}
             <li><a href="/events">Find Event</a></li> <!--should be a handlebars-->
             <li><a href="/tickets">Buy tickets</a></li> 
             <li><a href="/users">Users</a></li><!--should be a handlebars-->
