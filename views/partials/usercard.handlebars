@@ -5,24 +5,33 @@
 </style>
 
 <div>
-    <h2>My Created Events:</h2>
+    {{!-- <h2>My Created Events:</h2>
     <p>Event name:</p>
     <p>Location:</p>
     <p>Date:</p>
-    <p>Price:</p>
+    <p>Price:</p> --}}
+    {{> createdevents}}
 </div>
 
 <div>
-    <h2>Events Attending:</h2>
+    {{!-- <h2>Events Attending:</h2>
     <p>Event name:</p>
     <p>Location:</p>
     <p>Date:</p>
-    <p>Price:</p>
+    <p>Price:</p> --}}
+    {{> attendingevents}}
 </div>
 
 <div>
     <h2>Create a new event:</h2>
-    <p>new Event name:</p>
-    <p>new Location:</p>
-    <p>new Date:</p>
+    <form>
+        <label for="event-name">New Event Name:</label>
+        <input type="text" id="event-name" name="event-name">
+        <label for="event-location">Event Location:</label>
+        <input type="text" id="event-location" name="event-location">
+        <label for="event-date">Event Date:</label>
+        <input type="text" id="event-date" name="event-date">
+        <label for="event-date">Event Price:</label>
+        <input type="text" id="event-date" name="event-date">
+    </form>
 </div>

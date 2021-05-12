@@ -1,0 +1,8 @@
+{{#each userEvents.event_creator}}
+<div class="created-event" data-eventId="{{id}}">
+    <p>Event name: {{eventName}}</p>
+    <p>Location: {{event_location.streetAddress}}, {{event_location.city}} {{event_location.postalCode}} {{event_location.state}}, {{event_location.country}}</p>
+    <p>Date: {{eventDate}}</p>
+    <p>Price: {{eventPrice}}</p>
+</div>
+{{/each}}

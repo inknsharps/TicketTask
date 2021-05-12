@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
        });
        const events = eventsData.map((event) => event.get({ plain: true }));
        res.status(200).render("homepage", { 
+         user_id: req.session.user_id,
          logged_in: req.session.logged_in,
          events 
         })
@@ -36,6 +37,7 @@ router.get("/events", async (req, res) => {
        });
        const events = eventsData.map((event) => event.get({ plain: true }));
        res.status(200).render("events", { 
+        user_id: req.session.user_id,
         logged_in: req.session.logged_in,
         events 
       })
@@ -61,6 +63,7 @@ router.get('events/:id', async (req, res) => {
 
     res.render('event', {
       ...event,
+      user_id: req.session.user_id,
       logged_in: req.session.logged_in
     });
   } catch (err) {

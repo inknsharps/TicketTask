@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
         });
         const userEvents = rawUserEvents.get({ plain: true });
         console.log(userEvents);
-        res.status(200).json(userEvents);
+        res.status(200).render("users", { userEvents });
     } catch (err) {
         res.status(500).json(err);
     }
