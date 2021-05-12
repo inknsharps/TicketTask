@@ -1,3 +1,5 @@
+// This script creates a new ticket by sending a POST request to the backend.
+// Remeber that the link between user and event through tickets are DIFFERENT than user to event!
 const rsvpButton = document.querySelectorAll(".reserve-button");
 
 const createTicket = async (event) => {
@@ -6,16 +8,16 @@ const createTicket = async (event) => {
     const userId = document.querySelector(".search-results").getAttribute("data-userId");
     const eventId = event.target.parentElement.getAttribute("data-eventId");
 
-    console.log(userId);
-    console.log(eventId);
-
     const ticketResponse = await fetch(`/api/tickets/${userId}/${eventId}`, {
         method: "POST",
         body: JSON.stringify({ userId, eventId }),
         headers: { "Content-Type": "application/json" }
     });
-    const ticketData = await ticketResponse.json()
-    console.log(ticketData);
+    if (ticketResponse.ok) {
+        alert("Ticket RSVP'd for this event!")
+    } else {
+        alert("500 Server Error.")
+    }
 };
 
 rsvpButton.forEach((button) => {
