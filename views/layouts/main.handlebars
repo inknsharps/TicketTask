@@ -38,12 +38,15 @@
             <li><a href="/login">Log in</a></li>
             {{/unless}}
             <li><a href="/events">Find Event</a></li> <!--should be a handlebars-->
-            <li><a href="/tickets">Buy tickets</a></li> 
-            <li><a href="/users">Users</a></li><!--should be a handlebars-->
+            {{!-- <li><a href="/tickets">Buy tickets</a></li>  --}}
+            {{#if logged_in}}
+            <li><a href="/dashboard">Dashboard</a></li><!--should be a handlebars-->
+            <li><button class="no-button" id="logout">logout</button></li>
+            {{/if}}
           </ul>
         </div>
       </nav>
-            <!--second nav bar-->
+            {{!-- <!--second nav bar-->
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#search-title" class="brand-logo">search tickets</a>
             <ul class="right hide-on-med-and-down"></ul>
@@ -59,11 +62,11 @@
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        
         {{else}}
         <!--<li><a href="login.handlebars"></a></li>-->
         {{/if}}
-      </nav>
+      </nav> --}}
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

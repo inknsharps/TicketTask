@@ -5,24 +5,38 @@
 </style>
 
 <div>
-    <h2>My Created Events:</h2>
-    <p>Event name:</p>
-    <p>Location:</p>
-    <p>Date:</p>
-    <p>Price:</p>
+    <h5>My Created Events</h5>
+    {{> createdevents}}
 </div>
 
 <div>
-    <h2>Events Attending:</h2>
-    <p>Event name:</p>
-    <p>Location:</p>
-    <p>Date:</p>
-    <p>Price:</p>
+    <h5>My Tickets</h5>
+    {{> attendingevents}}
 </div>
 
 <div>
     <h2>Create a new event:</h2>
-    <p>new Event name:</p>
-    <p>new Location:</p>
-    <p>new Date:</p>
+    {{!-- Hide userId here --}}
+    <form class="create-new-event" data-userId={{userEvents.id}}>
+        <label for="event-name">New Event Name:</label>
+        <input type="text" id="event-name" name="event-name">
+        <fieldset>
+            <legend>Event Location Details:</legend>
+            <label for="event-address">Address</label>
+            <input type="text" id="event-address" name="event-address">
+            <label for="event-city">City</label>
+            <input type="text" id="event-city" name="event-city">
+            <label for="event-postalcode">Postal Code</label>
+            <input type="text" id="event-postalcode" name="event-postalcode">
+            <label for="event-state">State</label>
+            <input type="text" id="event-state" name="event-state">
+            <label for="event-country">Country</label>
+            <input type="text" id="event-country" name="event-country">
+        </fieldset>
+        <label for="event-date">Event Date:</label>
+        <input type="text" id="event-date" name="event-date">
+        <label for="event-date">Event Price:</label>
+        <input type="text" id="event-price" name="event-price">
+        <button type="submit">Submit</button>
+    </form>
 </div>

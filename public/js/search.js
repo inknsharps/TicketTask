@@ -1,9 +1,9 @@
 const cityInput = document.querySelector("#get-city");
-const searchCityButton = document.querySelector(".search-city");
+const searchCityArea = document.querySelector(".search-area");
 
 const searchCity = async (event) => {
     event.stopPropagation();
-    let searchedCity = cityInput.value;
+    const searchedCity = cityInput.value;
     
     const response = await fetch(`api/locations/search?city=${searchedCity}`, {
         method: "GET",
@@ -16,4 +16,4 @@ const searchCity = async (event) => {
     };
 };
 
-searchCityButton.addEventListener("click", searchCity);
+searchCityArea.addEventListener("submit", searchCity);

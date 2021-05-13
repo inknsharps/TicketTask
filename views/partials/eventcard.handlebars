@@ -7,13 +7,14 @@
         
 <div class="row">
     <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="icon-block" data-eventId={{location_events.0.id}}>
             <h2 class="center light-blue-text"><i class="material-icons">description</i></h2>
             <h5 class="center">Event</h5>
             <p>Event name: {{location_events.0.eventName}}</p>
             <p>Location: {{city}}</p>
             <p>Date: {{location_events.0.eventDate}}</p>
             <p>Price: {{location_events.0.eventPrice}}</p>
+            <button type="button" class="reserve-button">RSVP</button>
         </div>
     </div>
 </div>
