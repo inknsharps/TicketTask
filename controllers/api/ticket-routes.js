@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Event, Location, Ticket } = require("../../models");
+const checkAuthorization = require("../../utils/authorization");
 // nanoid is used to generate the ticket number
 const { nanoid } = require("nanoid");
 
@@ -28,7 +29,7 @@ router.get("/email/:userid/:eventid", async (req, res) => {
 
 // Create a ticket based on the event ID and user ID
 // Make SURE we grab existing event and user IDs from the request, otherwise this will probably break
-router.post("/:userid/:eventid", async (req, res) => {
+router.post("/:userid/:eventid", checkAuthorization, async (req, res) => {
     try {
         const newTicket = await Ticket.create({
             ticketNo: nanoid(),
