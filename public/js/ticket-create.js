@@ -16,7 +16,8 @@ const createTicket = async (event) => {
     if (ticketResponse.ok) {
         alert("Ticket RSVP'd for this event!")
     } else {
-        alert("500 Server Error.")
+        alert("500 Server Error, you must be logged into book a ticket!");
+        document.location.replace("/login");
     }
 };
 
