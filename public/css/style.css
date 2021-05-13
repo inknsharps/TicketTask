@@ -22,15 +22,25 @@
      color:black;
  }
 
+ .header {
+     color: white;
+ }
+
  h1 {
     text-shadow: 2px 2px 5px black;
+ }
+
+ h5 {
+     color: white;
  }
  nav {
      background-color: #Ff9800;
  }
  
  .row {
-     background-color: rgba(202, 223, 226, 0.28);;
+    background-color: rgb(0 0 0 / 0.5);
+    border-radius: 10px;
+    padding: 5vh;
  }
  .icon-block {
     padding: 0 15px;
@@ -38,6 +48,8 @@
     width: 80%;
     background: rgba(28, 152, 168, 0.28);
     transition: 1s;
+    padding: 4vh;
+    border-radius: 10px;
 }
 .icon-block:hover {
     transform: scale(1.2);
@@ -52,6 +64,9 @@
 
 .container {
     width: 80%;
+    background-color: rgba(255, 153, 0, 0.541);
+    border-radius: 10px;
+    margin-top: 5vh;
 }
 
 .input-field {
@@ -121,4 +136,8 @@
 
 .page-footer {
     margin-top: 5vw;
+}
+
+.user-profile {
+    display: grid;
 }
