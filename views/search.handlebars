@@ -1,7 +1,17 @@
 <h1 class="search-results" data-userId={{user_id}}>Search Results</h1>
 
-{{#each locationData as |location|}}
-{{> eventcard}}
-{{/each}}
+<style>
+    body {
+        background-image: url('/img/img3.jpg');
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+</style>
+
+<div class="row">
+    {{#each locationData as |location|}}
+    {{> eventcard}}
+    {{/each}}
+</div>
 
 <script src="../js/ticket-create.js"></script>
