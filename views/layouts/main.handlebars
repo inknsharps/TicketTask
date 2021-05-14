@@ -38,7 +38,7 @@
             {{!-- <li><a href="/tickets">Buy tickets</a></li>  --}}
             {{#if logged_in}}
             <li><a href="/dashboard">Dashboard</a></li><!--should be a handlebars-->
-            <li><button class="no-button" id="logout">logout</button></li>
+            <li><button class="no-button btn waves-effect waves-light" id="logout">logout</button></li>
             {{/if}}
           </ul>
         </div>
@@ -69,8 +69,15 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-
+    <footer class="page-footer orange">
+        <div class="footer-copyright">
+            <div class="container">
+              <div class="row">
+              <h5 class="white-text center">TICKETTASK</h5>
+              <p class="grey-text text-lighten-4 center">Copyright 2021.</p>
+              </div>
+            </div>
+        </div>
     </footer>
   </div>
 
