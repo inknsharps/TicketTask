@@ -1,15 +1,15 @@
-<div>
-    <h5>My Created Events</h5>
+<div class="col m5" style="border: 2px dotted white; padding: 2vh; margin: 2vh;">
+    <h5 style="text-decoration: underline;">My Created Events</h5>
     {{> createdevents}}
 </div>
 
-<div>
-    <h5>My Tickets</h5>
+<div class="col m5" style="border: 2px dotted white; padding: 2vh; margin: 2vh;">
+    <h5 style="text-decoration: underline;">My Tickets</h5>
     {{> attendingevents}}
 </div>
 
 {{!-- User Event Form --}}
-<div>
+<div class="col m12">
     <h2>Create a new event:</h2>
     <form class="create-new-event" data-userId={{userEvents.id}}>
         <label for="event-name">New Event Name:</label>
@@ -31,6 +31,6 @@
         <input type="date" id="event-date" name="event-date">
         <label for="event-date">Event Price:</label>
         <input type="number" id="event-price" name="event-price">
-        <button type="submit">Submit</button>
+        <button class="btn waves-effect waves-light" type="submit">Submit</button>
     </form>
 </div>
