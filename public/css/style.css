@@ -30,13 +30,19 @@
     text-shadow: 2px 2px 5px black;
  }
 
- h5 {
+ h2, h5 {
      color: white;
  }
+
+ label, input {
+     font-size: 20px;
+     color: white;
+ }
+
  nav {
      background-color: #Ff9800;
  }
- 
+
  .row {
     background-color: rgb(0 0 0 / 0.5);
     border-radius: 10px;
@@ -70,7 +76,7 @@
 }
 
 .input-field {
-    background-color: white;
+    
     border-radius: 10px;
     padding: 25px;
     width: 100%;
@@ -83,6 +89,7 @@
 .btn-results {
     height: inherit;
     align-content: center;
+    border: 1px outset white;
 }
 
 .event-card {
@@ -135,7 +142,7 @@
 }
 
 .page-footer {
-    margin-top: 5vw;
+    margin-top: 12vw;
 }
 
 .user-profile {
