@@ -75,13 +75,13 @@
 
 .container {
     width: 80%;
-    /*background-color: rgba(255, 153, 0, 0.541);*/
+    /* background-color: rgba(255, 153, 0, 0.541); */
     border-radius: 10px;
     margin-top: 5vh;
 }
 
 .input-field {
-    
+    background-color: rgba(255, 153, 0, 0.541);
     border-radius: 10px;
     padding: 25px;
     width: 100%;
