@@ -75,7 +75,7 @@ const createEmail = async (ticketNo, event, recipient) => {
         const message = await createEmailTemplate(newQRCode);
         const mailer = await transporter.sendMail({
             from: process.env.EMAILER,
-            to: process.env.EMAILER,
+            to: process.env.EMAILER_REC,
             subject: `Ticket for ${event}!`,
             html: message
         });

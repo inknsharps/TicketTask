@@ -2,7 +2,7 @@ const sendTicketButton = document.querySelectorAll(".send-email");
 
 const sendTicketEmail = async (event) => {
     const eventId = event.target.parentElement.getAttribute("data-eventId");
-    const userId = document.querySelector(".user-profile").getAttribute("data-userId");
+    const userId = document.querySelector("#user-profile").getAttribute("data-userId");
 
     const emailResponse = await fetch(`/api/tickets/email/${userId}/${eventId}`, {
         method: "GET",
